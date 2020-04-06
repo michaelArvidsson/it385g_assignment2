@@ -5,7 +5,7 @@
 <style>
     body {
         font-family: sans-serif;
-        background-color:lightgrey;
+        background-color:lightslategrey;
     }
     table{
         margin:auto;
@@ -13,6 +13,21 @@
     }
     td {
         padding:0px;
+    }
+    #tbl {
+        box-shadow: 2px 2px 4px 2px;
+    }
+    #selection {
+        Background-color: black;
+        width:350px;
+        border: 2px solid white;
+        margin:auto;
+        color: white;
+        padding: 5px;
+        text-align:center;
+        font-weight:bold;
+        font-size: 120%;
+        box-shadow: 2px 2px 4px 2px black;
     }
     #caption {
         background-color: black;
@@ -49,7 +64,7 @@
 </style>
 
 <body>
-<table border='1px'>
+<table id="tbl" border='1px'>
 <pre>
 <?php
 $trucks = array(
@@ -123,6 +138,9 @@ if(isset($_POST['country'])){
     $incountry="";
 }
 echo "<h1 id='caption'>Big Trucks information database</h1>";
+echo "<div id='selection'>";
+        echo "<p>Your selection: $incountry</p>";
+echo "</div>";
 echo "<tr><th id='head'>Manufacturer</th><th id='head'>City</th><th id='head'>Country</th><th id='head' colspan='6'>Misc</th>";
 /* Styling options?
     if ($truck[2] == "Belarus") {

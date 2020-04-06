@@ -5,6 +5,7 @@
 <style>
     body {
         font-family: sans-serif;
+        background-color:lightslategrey;
     }
     form {
         width:500px;
@@ -17,6 +18,7 @@
         Width:300px;
         margin:auto;
         font-weight:bold;
+        font-size:15px;
     }
     #head {
         background-color: black;

@@ -5,37 +5,54 @@
 <style>
     body {
         font-family: sans-serif;
+        background-color:lightgrey;
     }
-    form {
-        width:500px;
-        background-color: lightgrey;
-        padding:50px;
+    table{
         margin:auto;
-        box-shadow: 2px 2px 4px 2px;
+        background-color:white;
     }
-    #f_Body {
-        Width:300px;
-        margin:auto;
-        font-weight:bold;
+    td {
+        padding:0px;
     }
-    #head {
+    #caption {
         background-color: black;
         color:white;
         font-size: 200%;
         font-weight: 700;
         letter-spacing: 10px;
-        text-align: center;
+        text-align:center;
         text-transform: uppercase;
         padding:10px;
     }
-
+    #head {
+        Background-color: black;
+        color: white;
+        padding: 15px;
+        font-size: 120%;
+    }
+    #sub {
+        font-weight: bold;
+        text-align: center;
+        padding: 15px;
+    }
+    #m_head{
+        Background-color: black;
+        color: white;
+    }
+    #misc {
+        width:100px;
+        text-align: center;
+        font-size: 12px;
+        padding: 5px;
+        border: 1px 1px 1px 0px dotted black;
+    }
 </style>
 
 <body>
+<table border='1px'>
 <pre>
 <?php
 $trucks = array(
-    array(),
     array(
         "KrAZ", "Kremenchuk", "Ukraine",
         array(
@@ -98,20 +115,45 @@ $trucks = array(
             array("Tatra T 813", "4x4", "266Hp"),
             array("Tatra T 815", "10x10", "436Hp"),
         )
-        )
+    )
 );
-echo "<h1 id='head'>Big Trucks information database</h1>";
-echo "<form method='post' action='respond_it385g_assignment2.php'>";
-    echo "<div id='f_body'>";
-    echo "<label>Select country </label><select name='country'>";
-    foreach ($trucks as $country) {
-        echo "<option value='".$country[2]."' >".$country[2]."</option>";
+if(isset($_POST['country'])){
+    $incountry=$_POST['country'];    
+}else{
+    $incountry="";
+}
+echo "<h1 id='caption'>Big Trucks information database</h1>";
+echo "<tr><th id='head'>Manufacturer</th><th id='head'>City</th><th id='head'>Country</th><th id='head' colspan='6'>Misc</th>";
+/* Styling options?
+    if ($truck[2] == "Belarus") {
+        echo "<tr style='background:#ffff87;'>";
+    } else {
+        echo "<tr style='background:#87c5ff;'>";
+    }*/
+foreach ($trucks as $country) {
+    if($country[2]==$incountry){    
+        echo "<td id='sub'>" . $country[0] . "</td>";
+        echo "<td id='sub'>" . $country[1] . "</td>";
+        echo "<td id='sub'>" . $country[2] . "</td>";
+    
+        foreach ($country[3] as $brand) {
+            echo "<td>";
+            echo "<table>";
+            echo "<tr><th id='m_head'>Model</th></tr>";
+            echo "<tr><td id='misc'>" . $brand[0] . "</td></tr>";
+            echo "<tr><th id='m_head'>Drive shafts</th></tr>";
+            echo "<tr><td id='misc'>" . $brand[1] . "</td></tr>";
+            echo "<tr><th id='m_head'>Horsepowers</th></tr>";
+            echo "<tr><td id='misc'>" . $brand[2] . "</td></tr>";
+            echo "</table>";
+            echo "</td>";
+        }    
     }
-    echo "</select>";
-    echo "<input style='margin-left:10px'; type='submit' name='submitbutton' value='Show result'>";
-    echo "</form>";
-    echo "</div>";
-?> 
+    echo "</tr>";
+}
+print_r($_POST);
+?>
+</table>  
 </pre>
 </body>
 </html>

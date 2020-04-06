@@ -6,6 +6,9 @@
     body {
         font-family: sans-serif;
     }
+    td {
+        padding:0px;
+    }
     #caption {
         background-color: black;
         color:white;
@@ -26,12 +29,16 @@
         text-align: center;
         padding: 15px;
     }
+    #m_head{
+        Background-color: black;
+        color: white;
+    }
     #misc {
         width:100px;
         text-align: center;
         font-size: 12px;
         padding: 5px;
-        border: 1px dotted black;
+        border: 1px 1px 1px 0px dotted black;
     }
 </style>
 
@@ -105,14 +112,14 @@ $trucks = array(
     )
 );
 echo "<caption id='caption'>Big trucks</caption>";
-echo "<tr><th id='head'>Manufacturer</th><th id='head'>Brand</th><th id='head'>Country</th><th id='head' colspan='6'>Misc</th>";
+echo "<tr><th id='head'>Manufacturer</th><th id='head'>City</th><th id='head'>Country</th><th id='head' colspan='6'>Misc</th>";
 foreach ($trucks as $truck) {
     if ($truck[2] == "Belarus") {
         echo "<tr style='background:#ffff87;'>";
     } else {
         echo "<tr style='background:#87c5ff;'>";
     }
-    echo "<tr>";
+    
     echo "<td id='sub'>" . $truck[0] . "</td>";
     echo "<td id='sub'>" . $truck[1] . "</td>";
     echo "<td id='sub'>" . $truck[2] . "</td>";

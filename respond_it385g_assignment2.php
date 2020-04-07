@@ -22,6 +22,7 @@
         width:350px;
         border: 2px solid white;
         margin:auto;
+        margin-bottom: 20px;
         color: white;
         padding: 5px;
         text-align:center;
@@ -59,12 +60,9 @@
         text-align: center;
         font-size: 12px;
         padding: 5px;
-        border: 1px 1px 1px 0px dotted black;
     }
 </style>
-
 <body>
-<table id="tbl" border='1px'>
 <pre>
 <?php
 $trucks = array(
@@ -132,24 +130,28 @@ $trucks = array(
         )
     )
 );
+//Check form value
 if(isset($_POST['country'])){
-    $incountry=$_POST['country'];    
-}else{
-    $incountry="";
+    $incountry=$_POST['country'];
 }
-echo "<h1 id='caption'>Big Trucks information database</h1>";
-echo "<div id='selection'>";
+//check if value is missing
+if (empty($incountry)) {
+        echo "<h1 id='caption'>Big Trucks information database</h1>";
+        echo "<div id='selection'>";
+        echo "<p>Your selection is empty</p>";
+        echo "<button type='button' name='backbutton'><a href='it385g_assignment2.php' >Back</a></button>";
+        echo "</div>";
+// kör tabellen        
+}else{
+    echo "<h1 id='caption'>Big Trucks information database</h1>";
+    echo "<div id='selection'>";
         echo "<p>Your selection: $incountry</p>";
-echo "</div>";
-echo "<tr><th id='head'>Manufacturer</th><th id='head'>City</th><th id='head'>Country</th><th id='head' colspan='6'>Misc</th>";
-/* Styling options?
-    if ($truck[2] == "Belarus") {
-        echo "<tr style='background:#ffff87;'>";
-    } else {
-        echo "<tr style='background:#87c5ff;'>";
-    }*/
-foreach ($trucks as $country) {
-    if($country[2]==$incountry){    
+    echo "</div>";
+    echo "<table id='tbl' border='1px'>";
+    echo "<tr><th id='head'>Manufacturer</th><th id='head'>City</th><th id='head'>Country</th><th id='head' colspan='6'>Misc</th></tr>";
+    foreach ($trucks as $country) {
+        if($country[2]==$incountry){  
+        echo "<tr>";  
         echo "<td id='sub'>" . $country[0] . "</td>";
         echo "<td id='sub'>" . $country[1] . "</td>";
         echo "<td id='sub'>" . $country[2] . "</td>";
@@ -165,13 +167,15 @@ foreach ($trucks as $country) {
             echo "<tr><td id='misc'>" . $brand[2] . "</td></tr>";
             echo "</table>";
             echo "</td>";
-        }    
+        } 
+        echo "</tr>";   
     }
-    echo "</tr>";
+    }    
 }
-print_r($_POST);
-?>
-</table>  
+echo "</table>";
+// Test POST
+//print_r($_POST);
+?>  
 </pre>
 </body>
 </html>

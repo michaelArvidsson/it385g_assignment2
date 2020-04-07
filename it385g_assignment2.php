@@ -9,7 +9,7 @@
     }
     form {
         width:500px;
-        background-color: lightgrey;
+        background-color: white;
         padding:50px;
         margin:auto;
         box-shadow: 2px 2px 4px 2px;

@@ -14,6 +14,17 @@
     td {
         padding:0px;
     }
+    button, a {
+        color:black;
+        text-decoration:none;
+        transition: 0.8s;
+        padding:5px;
+        margin-bottom:10px;
+        font-weight:bold;
+    }
+    button:hover {
+        box-shadow: 0px 0px 4px 3px white;
+    }
     #tbl {
         box-shadow: 2px 2px 4px 2px;
     }

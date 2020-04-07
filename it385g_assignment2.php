@@ -37,7 +37,7 @@
 <pre>
 <?php
 $trucks = array(
-    array(),
+    array("","",""),
     array(
         "KrAZ", "Kremenchuk", "Ukraine",
         array(
@@ -102,12 +102,24 @@ $trucks = array(
         )
         )
 );
+//New array with only countries
+$newarray = array();
+foreach ($trucks as $truck) {
+  if(isset($truck[2])){
+     $newarray[] =  $truck[2];
+  }
+}
+//Filter array
+$newarray = array_unique($newarray);
+//Sort array descending
+sort($newarray);
+
 echo "<h1 id='head'>Big Trucks information database</h1>";
 echo "<form method='post' action='respond_it385g_assignment2.php'>";
     echo "<div id='f_body'>";
     echo "<label>Select country </label><select name='country'>";
-    foreach ($trucks as $country) {
-        echo "<option value='".$country[2]."' >".$country[2]."</option>";
+    foreach ($newarray as $country) {
+        echo "<option value='".$country."' >".$country."</option>";
     }
     echo "</select>";
     echo "<input style='margin-left:10px'; type='submit' name='submitbutton' value='Show result'>";
